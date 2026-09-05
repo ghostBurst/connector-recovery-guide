@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A private, browser-only guide that classifies normalized connector failures and suggests the next recovery step.">
+  <title>Connector Recovery Guide</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <p class="eyebrow">FREE · PRIVATE · BROWSER-ONLY</p>
+    <h1>Connector Recovery Guide</h1>
+    <p class="lead">Turn a status code or safe error category into a clear recovery step. Your input stays in this browser and is never sent anywhere.</p>
+    <section class="card" aria-labelledby="diagnose-title">
+      <h2 id="diagnose-title">Diagnose a connection failure</h2>
+      <form id="diagnose-form">
+        <label for="status">HTTP status <span>optional</span></label>
+        <input id="status" name="status" inputmode="numeric" placeholder="401, 403, 429, 503…" autocomplete="off">
+        <label for="code">Safe error code <span>optional — never paste a token</span></label>
+        <input id="code" name="code" placeholder="TOKEN_EXPIRED, ETIMEDOUT…" autocomplete="off">
+        <button type="submit">Show the recovery step</button>
+      </form>
+      <div id="result" class="result" hidden aria-live="polite"></div>
+    </section>
+    <section class="grid" aria-label="Common recovery paths">
+      <article><b>401</b><h2>Reconnect</h2><p>The authorization is probably expired or revoked.</p></article>
+      <article><b>403</b><h2>Review permissions</h2><p>The account may be connected without the required scope.</p></article>
+      <article><b>429 / 5xx</b><h2>Retry safely</h2><p>Wait, use backoff, then retry without duplicating side effects.</p></article>
+    </section>
+    <aside><strong>Security note</strong><p>Use only normalized status and error codes. Do not paste passwords, API keys, OAuth tokens, personal messages, or complete server responses.</p></aside>
+  </main>
+  <footer>Open-source recovery aid · No account · No tracking · No network request</footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
