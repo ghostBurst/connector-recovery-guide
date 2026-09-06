@@ -3,8 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="A private, browser-only guide that classifies normalized connector failures and suggests the next recovery step.">
-  <title>Connector Recovery Guide</title>
+  <meta name="description" content="Diagnose HTTP 401, 403, 429 and connector sync errors privately in your browser. Get a safe recovery step without sending logs or tokens anywhere.">
+  <link rel="canonical" href="https://ghostburst.github.io/connector-recovery-guide/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Connector Error Recovery Guide — Private 401/403/429 diagnosis">
+  <meta property="og:description" content="Turn a safe connector error code into a clear recovery step. Free, open source, browser-only and no tracking.">
+  <meta property="og:url" content="https://ghostburst.github.io/connector-recovery-guide/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Connector Error Recovery Guide">
+  <meta name="twitter:description" content="Private browser-only guidance for 401, 403, 429, 5xx and common connector errors.">
+  <title>Connector Error Recovery Guide — Fix 401, 403, 429 & Sync Failures</title>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Connector Recovery Guide","url":"https://ghostburst.github.io/connector-recovery-guide/","applicationCategory":"DeveloperApplication","operatingSystem":"Any modern browser","isAccessibleForFree":true,"description":"A private browser-only diagnostic guide for normalized connector errors."}</script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,7 +30,11 @@
         <input id="code" name="code" placeholder="TOKEN_EXPIRED, ETIMEDOUT…" autocomplete="off">
         <button type="submit">Show the recovery step</button>
       </form>
-      <div id="result" class="result" hidden aria-live="polite"></div>
+      <div id="result" class="result" hidden aria-live="polite" role="status"></div>
+      <div id="result-actions" class="result-actions" hidden>
+        <button id="copy-result" type="button" class="secondary">Copy recovery steps</button>
+        <button id="share-tool" type="button" class="secondary">Share this guide</button>
+      </div>
     </section>
     <section class="grid" aria-label="Common recovery paths">
       <article><b>401</b><h2>Reconnect</h2><p>The authorization is probably expired or revoked.</p></article>
@@ -29,8 +42,15 @@
       <article><b>429 / 5xx</b><h2>Retry safely</h2><p>Wait, use backoff, then retry without duplicating side effects.</p></article>
     </section>
     <aside><strong>Security note</strong><p>Use only normalized status and error codes. Do not paste passwords, API keys, OAuth tokens, personal messages, or complete server responses.</p></aside>
+    <section class="help" aria-labelledby="help-title">
+      <h2 id="help-title">Connector recovery, without exposing your data</h2>
+      <p>This guide is for developers and integration maintainers troubleshooting OAuth renewal, permission scope, rate-limit, timeout and provider outage failures. The diagnosis runs locally in your browser.</p>
+      <details><summary>What should I enter?</summary><p>Only an HTTP status such as 401, 403, 429 or 503, or a normalized code such as TOKEN_EXPIRED or ETIMEDOUT.</p></details>
+      <details><summary>What should I never paste?</summary><p>Never paste a password, API key, OAuth token, complete server response, user message or personal identifier.</p></details>
+      <details><summary>How can I verify or improve the tool?</summary><p>Read the <a href="https://github.com/ghostBurst/connector-recovery-guide#readme" rel="noopener">open-source documentation</a> or <a href="https://github.com/ghostBurst/connector-recovery-guide/issues/new?title=Connector%20recovery%20feedback&body=Safe%20normalized%20error%20only%20(no%20tokens%20or%20personal%20data):%0A%0AWhat%20did%20you%20expect?%0A" rel="noopener">send feedback in a GitHub issue</a>. Do not include secrets or personal data.</p></details>
+    </section>
   </main>
-  <footer>Open-source recovery aid · No account · No tracking · No network request</footer>
+  <footer><a href="https://github.com/ghostBurst/connector-recovery-guide" rel="noopener">Open source on GitHub</a> · No account · No tracking · No network request</footer>
   <script type="module" src="app.js"></script>
 </body>
 </html>
