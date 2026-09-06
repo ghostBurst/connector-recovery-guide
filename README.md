@@ -53,3 +53,9 @@ npm test
 Open `index.html` directly or visit the GitHub Pages deployment. Classification runs entirely in the browser. There are no accounts, cookies, trackers, analytics, forms, external scripts, or network requests.
 
 This public repository intentionally contains only `index.html`, `app.js`, `styles.css`, `README.md`, and `robots.txt`. It contains no credentials, raw connector payloads, local event files, or private Jarvis data.
+
+## Feedback and privacy
+
+Feedback is accepted through [GitHub issues](https://github.com/ghostBurst/connector-recovery-guide/issues). Share only a normalized status or safe error code and the recovery outcome you expected. Never post credentials, OAuth tokens, full logs, personal messages, connector payloads, or identifying data.
+
+The website intentionally has no analytics backend. Product interactions such as diagnostics, copy actions, and successful recoveries are therefore `UNKNOWN`, not estimated. Repository traffic, stars, forks, and public issues may be measured from GitHub's own repository APIs.
